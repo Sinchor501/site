@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Интерактивный урок: HTML и CSS для школьников">
+  <title>HTML и CSS: урок для школьников</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" id="siteCss">
+  <script src="script.js" defer></script>
+</head>
+<body id="top">
+
+  <header class="topbar">
+    <a class="brand" href="#top">HTML/CSS</a>
+    <div class="topbar-right">
+      <span class="css-state" role="status"></span>
+      <button type="button" class="btn btn-ghost css-toggle">Выключить CSS</button>
+    </div>
+  </header>
+
+  <!-- ===== Первый экран ===== -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-text">
+      <p class="kicker">Урок информатики · 7 шагов</p>
+      <h1 id="hero-title">Сайт — это текст, который понимает браузер</h1>
+      <p class="lede">
+        HTML описывает, что есть на странице. CSS описывает, как это выглядит.
+        Поменяй настройки кнопки справа и посмотри на код.
+      </p>
+      <p class="hero-actions">
+        <a class="btn" href="#lesson-1">Начать урок</a>
+        <a class="btn btn-ghost" href="#lesson-6">Сразу к практике</a>
+      </p>
+    </div>
+
+    <div class="demo-panel">
+      <h2 class="demo-title">Настрой кнопку</h2>
+      <div class="demo-stage">
+        <button type="button" id="heroBtn" class="hero-btn">Нажми меня</button>
+      </div>
+
+      <fieldset class="swatches">
+        <legend>Цвет фона</legend>
+        <div class="swatch-row">
+          <label class="swatch" style="--c:#58a6ff"><input type="radio" name="heroColor" value="#58a6ff" checked><span>Синий</span></label>
+          <label class="swatch" style="--c:#7ee787"><input type="radio" name="heroColor" value="#7ee787"><span>Зелёный</span></label>
+          <label class="swatch" style="--c:#f0b72f"><input type="radio" name="heroColor" value="#f0b72f"><span>Жёлтый</span></label>
+          <label class="swatch" style="--c:#f85149"><input type="radio" name="heroColor" value="#f85149"><span>Красный</span></label>
+          <label class="swatch" style="--c:#a371f7"><input type="radio" name="heroColor" value="#a371f7"><span>Фиолетовый</span></label>
+        </div>
+      </fieldset>
+
+      <div class="sliders">
+        <div class="slider">
+          <label for="heroRadius">Скругление <output id="heroRadiusOut">12 px</output></label>
+          <input type="range" id="heroRadius" min="0" max="40" value="12">
+        </div>
+        <div class="slider">
+          <label for="heroPad">Внутренний отступ <output id="heroPadOut">12 px</output></label>
+          <input type="range" id="heroPad" min="6" max="24" value="12">
+        </div>
+        <div class="slider">
+          <label for="heroSize">Размер текста <output id="heroSizeOut">18 px</output></label>
+          <input type="range" id="heroSize" min="14" max="30" value="18">
+        </div>
+      </div>
+
+      <pre class="code" data-lang="css" id="heroCode"><code></code></pre>
+    </div>
+  </section>
+
+  <!-- ===== Уроки ===== -->
+  <div class="layout">
+
+    <aside class="side">
+      <nav class="toc" aria-label="Уроки">
+        <p class="toc-progress">
+          <span id="progressText">Пройдено 0 из 7</span>
+          <progress id="progress" max="7" value="0" aria-label="Прогресс по урокам"></progress>
+        </p>
+        <ol>
+          <li><a href="#lesson-1" data-lesson="1">Что такое HTML и CSS</a></li>
+          <li><a href="#lesson-2" data-lesson="2">Структура документа</a></li>
+          <li><a href="#lesson-3" data-lesson="3">Теги в деле</a></li>
+          <li><a href="#lesson-4" data-lesson="4">Основы CSS</a></li>
+          <li><a href="#lesson-5" data-lesson="5">Цвета и отступы</a></li>
+          <li><a href="#lesson-6" data-lesson="6">Практика</a></li>
+          <li><a href="#lesson-7" data-lesson="7">Проверь себя</a></li>
+        </ol>
+      </nav>
+    </aside>
+
+    <main class="lessons" id="content">
+
+      <!-- Урок 1 -->
+      <section class="lesson" id="lesson-1" aria-labelledby="l1">
+        <h2 id="l1">Что такое HTML и CSS</h2>
+        <p>
+          Любой сайт собран из двух частей. <strong>HTML</strong> описывает содержимое: заголовок,
+          абзац, ссылка. <strong>CSS</strong> описывает внешний вид: цвета, шрифты, отступы
+          и расположение блоков.
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Кто за что отвечает</caption>
+            <thead>
+              <tr><th></th><th>HTML</th><th>CSS</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Отвечает за</td><td>Что есть на странице</td><td>Как это выглядит</td></tr>
+              <tr><td>Например</td><td>Заголовок, абзац, список, таблица</td><td>Цвет, шрифт, отступы, рамка</td></tr>
+              <tr><td>Пример кода</td><td><code>&lt;p&gt;Привет&lt;/p&gt;</code></td><td><code>p { color: red; }</code></td></tr>
+              <tr><td>Файл</td><td><code>index.html</code></td><td><code>style.css</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Проверь сам</h3>
+        <p>
+          Нажми «Выключить CSS» в верхней части страницы. Цвета и отступы пропадут,
+          останется только HTML. Нажми «Включить CSS», чтобы вернуть оформление.
+        </p>
+
+        <p class="done-row"><button type="button" class="done-btn" data-lesson="1">Отметить урок пройденным</button></p>
+      </section>
+
+      <!-- Урок 2 -->
+      <section class="lesson" id="lesson-2" aria-labelledby="l2">
+        <h2 id="l2">Структура документа</h2>
+        <p>Каждая HTML-страница состоит из одних и тех же частей.</p>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Части HTML-документа</caption>
+            <thead>
+              <tr><th>Часть</th><th>Что это</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>&lt;!DOCTYPE html&gt;</code></td><td>Сообщает браузеру, что это современная HTML-страница</td></tr>
+              <tr><td><code>&lt;html&gt;</code></td><td>Главный тег: внутри него лежит вся страница</td></tr>
+              <tr><td><code>&lt;head&gt;</code></td><td>Служебная информация: название вкладки, кодировка, подключение стилей</td></tr>
+              <tr><td><code>&lt;body&gt;</code></td><td>Всё, что видит посетитель: текст, картинки, ссылки</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Из чего состоит тег</h3>
+        <p>Нажимай на части кода ниже, и под ним появится объяснение.</p>
+        <div class="anatomy" role="group" aria-label="Части тега">
+          <button type="button" class="part" data-info="Открывающий тег начинается со знака «меньше» и названия. Буква a — от слова anchor, «якорь»: так в HTML называется ссылка.">&lt;a</button>
+          <button type="button" class="part" data-info="Атрибут — дополнительная настройка тега. Атрибут href задаёт адрес, куда ведёт ссылка. Слева стоит имя атрибута, справа от знака равно — значение в кавычках.">href="https://example.com"</button>
+          <button type="button" class="part" data-info="Ещё один атрибут. Значение _blank открывает ссылку в новой вкладке. Атрибутов у тега может быть сколько угодно, между ними ставится пробел.">target="_blank"</button>
+          <button type="button" class="part" data-info="Знак «больше» заканчивает открывающий тег. Дальше идёт содержимое элемента.">&gt;</button>
+          <button type="button" class="part" data-info="Содержимое элемента. Этот текст увидит посетитель и сможет нажать на него.">Открыть сайт</button>
+          <button type="button" class="part" data-info="Закрывающий тег повторяет открывающий, но со слэшем. Без него браузер не поймёт, где заканчивается элемент.">&lt;/a&gt;</button>
+        </div>
+        <p class="anatomy-text" id="anatomyText" role="status">Выбери любую часть, чтобы прочитать, что она делает.</p>
+
+        <h3>Справочник</h3>
+        <p>Введи слово в поиск или выбери язык.</p>
+        <div class="filter">
+          <div>
+            <label class="lbl" for="refSearch">Поиск</label>
+            <input type="search" id="refSearch" placeholder="Например: список, color, p">
+          </div>
+          <div class="chips" role="group" aria-label="Фильтр по языку">
+            <button type="button" class="chip" data-group="all" aria-pressed="true">Всё</button>
+            <button type="button" class="chip" data-group="html" aria-pressed="false">HTML</button>
+            <button type="button" class="chip" data-group="css" aria-pressed="false">CSS</button>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table id="refTable">
+            <caption>Теги и свойства</caption>
+            <thead>
+              <tr><th>Название</th><th>Что делает</th><th>Язык</th></tr>
+            </thead>
+            <tbody>
+              <tr data-group="html"><td><code>&lt;h1&gt;…&lt;h6&gt;</code></td><td>Заголовки: h1 главный, h6 самый мелкий</td><td>HTML</td></tr>
+              <tr data-group="html"><td><code>&lt;p&gt;</code></td><td>Абзац текста</td><td>HTML</td></tr>
+              <tr data-group="html"><td><code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code></td><td>Жирный и курсивный текст</td><td>HTML</td></tr>
+              <tr data-group="html"><td><code>&lt;a&gt;</code></td><td>Ссылка. Адрес задаётся атрибутом href</td><td>HTML</td></tr>
+              <tr data-group="html"><td><code>&lt;img&gt;</code></td><td>Картинка. Файл указывает src, описание пишется в alt</td><td>HTML</td></tr>
+              <tr data-group="html"><td><code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, <code>&lt;li&gt;</code></td><td>Список с точками, список с цифрами и пункт списка</td><td>HTML</td></tr>
+              <tr data-group="html"><td><code>&lt;table&gt;</code>, <code>&lt;tr&gt;</code>, <code>&lt;th&gt;</code>, <code>&lt;td&gt;</code></td><td>Таблица, строка, заголовок столбца и ячейка</td><td>HTML</td></tr>
+              <tr data-group="html"><td><code>&lt;div&gt;</code></td><td>Блок, в который собирают другие элементы</td><td>HTML</td></tr>
+              <tr data-group="css"><td><code>color</code></td><td>Цвет текста</td><td>CSS</td></tr>
+              <tr data-group="css"><td><code>background</code></td><td>Фон элемента: цвет или картинка</td><td>CSS</td></tr>
+              <tr data-group="css"><td><code>font-size</code></td><td>Размер шрифта</td><td>CSS</td></tr>
+              <tr data-group="css"><td><code>font-family</code></td><td>Шрифт</td><td>CSS</td></tr>
+              <tr data-group="css"><td><code>text-align</code></td><td>Выравнивание текста: left, center, right</td><td>CSS</td></tr>
+              <tr data-group="css"><td><code>margin</code></td><td>Внешний отступ вокруг элемента</td><td>CSS</td></tr>
+              <tr data-group="css"><td><code>padding</code></td><td>Внутренний отступ между рамкой и содержимым</td><td>CSS</td></tr>
+              <tr data-group="css"><td><code>border</code></td><td>Рамка вокруг элемента</td><td>CSS</td></tr>
+              <tr data-group="css"><td><code>border-radius</code></td><td>Скругление углов</td><td>CSS</td></tr>
+              <tr data-group="css"><td><code>width</code>, <code>height</code></td><td>Ширина и высота</td><td>CSS</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p id="refEmpty" hidden>Ничего не нашлось. Попробуй слово покороче.</p>
+
+        <p class="done-row"><button type="button" class="done-btn" data-lesson="2">Отметить урок пройденным</button></p>
+      </section>
+
+      <!-- Урок 3 -->
+      <section class="lesson" id="lesson-3" aria-labelledby="l3">
+        <h2 id="l3">Теги в деле</h2>
+        <p>Выбери тему, поменяй код и посмотри на результат справа.</p>
+
+        <div class="lab">
+          <div class="tabs" role="tablist" aria-label="Темы" id="labTabs"></div>
+          <div class="lab-body" id="labPanel" role="tabpanel">
+            <p class="lab-hint" id="labHint"></p>
+            <div class="lab-grid">
+              <div>
+                <label class="lbl" for="labCode">Код</label>
+                <textarea id="labCode" spellcheck="false"></textarea>
+              </div>
+              <div>
+                <span class="lbl">Результат</span>
+                <iframe id="labFrame" title="Результат кода" sandbox="allow-same-origin"></iframe>
+              </div>
+            </div>
+            <p><button type="button" class="btn btn-ghost" id="labReset">Сбросить код</button></p>
+          </div>
+        </div>
+
+        <p class="done-row"><button type="button" class="done-btn" data-lesson="3">Отметить урок пройденным</button></p>
+      </section>
+
+      <!-- Урок 4 -->
+      <section class="lesson" id="lesson-4" aria-labelledby="l4">
+        <h2 id="l4">Основы CSS</h2>
+        <p>
+          CSS-правило состоит из селектора и блока свойств в фигурных скобках.
+          Селектор отвечает на вопрос «к кому применить», а свойства — «что изменить».
+        </p>
+        <pre class="code" data-lang="css"><code>p {
+  color: blue;
+  font-size: 18px;
+}</code></pre>
+        <p>
+          Все абзацы <code>&lt;p&gt;</code> станут синими, а размер букв — 18 пикселей.
+          Каждое свойство записывается как <code>свойство: значение;</code>.
+        </p>
+
+        <h3>Как подключить CSS</h3>
+        <div class="table-wrap">
+          <table>
+            <caption>Три способа</caption>
+            <thead>
+              <tr><th>Способ</th><th>Как выглядит</th><th>Когда использовать</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Отдельный файл</td><td><code>&lt;link rel="stylesheet" href="style.css"&gt;</code></td><td>Всегда, когда делаешь сайт</td></tr>
+              <tr><td>Тег style</td><td><code>&lt;style&gt; p { color: red; } &lt;/style&gt;</code></td><td>Для небольшого опыта на одной странице</td></tr>
+              <tr><td>Атрибут style</td><td><code>&lt;p style="color: red;"&gt;</code></td><td>Чтобы быстро изменить один элемент</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Селекторы</h3>
+        <p>
+          Введи селектор или нажми на готовый пример. Выбранные элементы подсветятся на сцене.
+          Точка перед именем означает класс, решётка — id, пробел — «внутри».
+        </p>
+        <div class="sel-row">
+          <label class="lbl" for="selInput">Селектор</label>
+          <input type="text" id="selInput" class="sel-input" value="p" autocomplete="off" spellcheck="false">
+        </div>
+        <div class="sel-examples" role="group" aria-label="Готовые примеры">
+          <button type="button" class="ex">p</button>
+          <button type="button" class="ex">.note</button>
+          <button type="button" class="ex">#title</button>
+          <button type="button" class="ex">li</button>
+          <button type="button" class="ex">ul li</button>
+          <button type="button" class="ex">li.note</button>
+          <button type="button" class="ex">h3, p</button>
+        </div>
+        <p id="selOut" role="status"></p>
+        <div class="stage" id="selStage">
+          <h3 id="title">Мой плейлист</h3>
+          <p>Обычный абзац.</p>
+          <p class="note">Абзац с классом note.</p>
+          <ul>
+            <li>Первая песня</li>
+            <li class="note">Любимая песня с классом note</li>
+            <li>Третья песня</li>
+          </ul>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Основные селекторы</caption>
+            <thead>
+              <tr><th>Запись</th><th>Что выбирает</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><code>p</code></td><td>Все элементы с таким тегом</td></tr>
+              <tr><td><code>.note</code></td><td>Элементы с атрибутом <code>class="note"</code></td></tr>
+              <tr><td><code>#title</code></td><td>Единственный элемент с <code>id="title"</code></td></tr>
+              <tr><td><code>ul li</code></td><td>Пункты, которые лежат внутри списка</td></tr>
+              <tr><td><code>h3, p</code></td><td>Сразу несколько видов элементов</td></tr>
+              <tr><td><code>a:hover</code></td><td>Ссылку, на которую навели мышь</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="done-row"><button type="button" class="done-btn" data-lesson="4">Отметить урок пройденным</button></p>
+      </section>
+
+      <!-- Урок 5 -->
+      <section class="lesson" id="lesson-5" aria-labelledby="l5">
+        <h2 id="l5">Цвета и отступы</h2>
+        <p>
+          Цвет можно записать названием (<code>red</code>), кодом HEX (<code>#ff0000</code>)
+          или функцией <code>rgb(255, 0, 0)</code>. Выбери цвет и посмотри запись.
+        </p>
+        <div class="color-tool">
+          <div>
+            <label class="lbl" for="pick">Выбери цвет</label>
+            <input type="color" id="pick" value="#58a6ff">
+          </div>
+          <div class="color-sample" id="pickSample"></div>
+          <p>HEX: <code id="pickHex"></code> RGB: <code id="pickRgb"></code></p>
+        </div>
+
+        <h3>Коробка элемента</h3>
+        <p>
+          Каждый элемент — прямоугольная коробка из трёх слоёв: рамка, внутренний отступ (padding)
+          и внешний отступ (margin). Меняй ползунки и смотри на коробку и на код.
+        </p>
+        <div class="tool">
+          <div>
+            <div class="bm-stage">
+              <div class="bm-margin" id="bmMargin">
+                <div class="bm-el" id="bmEl">
+                  <div class="bm-content">Содержимое</div>
+                </div>
+              </div>
+            </div>
+            <ul class="legend">
+              <li style="--c:#f0b72f">margin — внешний отступ</li>
+              <li style="--c:#58a6ff">border — рамка</li>
+              <li style="--c:#7ee787">padding — внутренний отступ</li>
+            </ul>
+          </div>
+          <div>
+            <div class="slider">
+              <label for="bmM">Внешний отступ <output id="bmMOut">20 px</output></label>
+              <input type="range" id="bmM" min="0" max="40" value="20">
+            </div>
+            <div class="slider">
+              <label for="bmB">Рамка <output id="bmBOut">4 px</output></label>
+              <input type="range" id="bmB" min="0" max="12" value="4">
+            </div>
+            <div class="slider">
+              <label for="bmP">Внутренний отступ <output id="bmPOut">16 px</output></label>
+              <input type="range" id="bmP" min="0" max="40" value="16">
+            </div>
+            <pre class="code" data-lang="css" id="bmCode"><code></code></pre>
+          </div>
+        </div>
+
+        <p class="done-row"><button type="button" class="done-btn" data-lesson="5">Отметить урок пройденным</button></p>
+      </section>
+
+      <!-- Урок 6 -->
+      <section class="lesson" id="lesson-6" aria-labelledby="l6">
+        <h2 id="l6">Практика</h2>
+        <p>
+          Пиши HTML и CSS в двух окнах, результат появится справа. Каждое задание
+          засчитывается автоматически, как только код становится правильным.
+        </p>
+
+        <ul class="tasks" id="tasks">
+          <li data-task="0">Сделай заголовок красным <span class="task-state">не выполнено</span></li>
+          <li data-task="1">Добавь список из трёх пунктов <span class="task-state">не выполнено</span></li>
+          <li data-task="2">Добавь ссылку с адресом <span class="task-state">не выполнено</span></li>
+          <li data-task="3">Сделай у абзаца рамку со скруглёнными углами <span class="task-state">не выполнено</span></li>
+        </ul>
+        <p id="edStatus" role="status"></p>
+
+        <div class="ed-grid">
+          <div class="ed-inputs">
+            <div>
+              <label class="lbl" for="edHtml">HTML</label>
+              <textarea id="edHtml" spellcheck="false"><h1>Мой первый сайт</h1>
+<p>Меня зовут ..., и я учу HTML и CSS.</p></textarea>
+            </div>
+            <div>
+              <label class="lbl" for="edCss">CSS</label>
+              <textarea id="edCss" spellcheck="false">h1 {
+  font-size: 32px;
+}</textarea>
+            </div>
+          </div>
+          <div>
+            <span class="lbl">Результат</span>
+            <iframe id="edFrame" title="Результат твоего кода" sandbox="allow-same-origin"></iframe>
+          </div>
+        </div>
+        <p><button type="button" class="btn btn-ghost" id="edReset">Сбросить код</button></p>
+
+        <p class="done-row"><button type="button" class="done-btn" data-lesson="6">Отметить урок пройденным</button></p>
+      </section>
+
+      <!-- Урок 7 -->
+      <section class="lesson" id="lesson-7" aria-labelledby="l7">
+        <h2 id="l7">Проверь себя</h2>
+        <p>Шесть вопросов. После каждого ответа появится объяснение.</p>
+        <div class="quiz">
+          <div id="quizRun">
+            <p class="quiz-count" id="quizCount"></p>
+            <h3 id="quizQ"></h3>
+            <div id="quizOpts"></div>
+            <p class="quiz-why" id="quizWhy" role="status"></p>
+            <button type="button" class="btn" id="quizNext" hidden>Следующий вопрос</button>
+          </div>
+          <div id="quizEnd" hidden>
+            <h3 id="quizScore"></h3>
+            <p id="quizMsg"></p>
+            <button type="button" class="btn" id="quizAgain">Пройти ещё раз</button>
+          </div>
+        </div>
+
+        <p class="done-row"><button type="button" class="done-btn" data-lesson="7">Отметить урок пройденным</button></p>
+      </section>
+
+      <!-- Дополнительно -->
+      <section class="extra" aria-labelledby="plan">
+        <h2 id="plan">План на шесть недель</h2>
+        <div class="table-wrap">
+          <table>
+            <caption>Что и когда изучать</caption>
+            <thead>
+              <tr><th>Неделя</th><th>Тема</th><th>Результат</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>1</td><td>Структура страницы, заголовки, абзацы</td><td>Страница «Обо мне»</td></tr>
+              <tr><td>2</td><td>Ссылки, картинки, списки</td><td>Страница «Мои увлечения»</td></tr>
+              <tr><td>3</td><td>Таблицы и формы</td><td>Расписание уроков</td></tr>
+              <tr><td>4</td><td>Подключение CSS, цвета, шрифты</td><td>Раскрашенная страница</td></tr>
+              <tr><td>5</td><td>Классы, блочная модель, отступы</td><td>Страница с карточками</td></tr>
+              <tr><td>6</td><td>Итоговый проект</td><td>Сайт из двух-трёх страниц</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>Сайт состоит из трёх файлов: index.html, style.css и script.js.</p>
+    <button type="button" class="btn btn-ghost css-toggle">Выключить CSS</button>
+  </footer>
+
+</body>
+</html>
